@@ -11,10 +11,11 @@ if (!defined('MODX_CORE_PATH')) {
 return [
     'name' => 'modExtra',
     'name_lower' => 'modextra',
-    'version' => '2.0.0',
+    'version' => '1.0.0',
     'release' => 'pl',
     // Install package to site right after build
     'install' => true,
+    'set_debug_namespace'=> true,
     // Which elements should be updated on package upgrade
     'update' => [
         'chunks' => false,
@@ -36,8 +37,8 @@ return [
         'chunks' => false,
     ],
     // Log settings
-    'log_level' => !empty($_REQUEST['download']) ? 0 : 3,
-    'log_target' => php_sapi_name() == 'cli' ? 'ECHO' : 'HTML',
+    'log_level' => 3,
+    'log_target' => "ECHO",
     // Download transport.zip after build
     'download' => !empty($_REQUEST['download']),
 ];
