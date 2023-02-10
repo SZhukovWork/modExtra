@@ -1,6 +1,7 @@
 <?php
 
 return [
+    /* example
     'web' => [
         'index' => [
             'pagetitle' => 'Home',
@@ -29,5 +30,5 @@ return [
                 ],
             ],
         ],
-    ],
+    ],*/
 ];
