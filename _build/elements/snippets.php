@@ -1,6 +1,7 @@
 <?php
 
 return [
+    /* example
     'modExtra' => [
         'file' => 'modextra',
         'description' => 'modExtra snippet to list items',
@@ -34,5 +35,5 @@ return [
                 'value' => false,
             ],
         ],
-    ],
+    ],*/
 ];
