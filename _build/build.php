@@ -1,6 +1,6 @@
 <?php
 
-class modExtraPackage
+class frontNotificationPackage
 {
     /** @var modX $modx */
     public $modx;
@@ -17,7 +17,7 @@ class modExtraPackage
 
 
     /**
-     * modExtraPackage constructor.
+     * frontNotificationPackage constructor.
      *
      * @param $core_path
      * @param array $config
@@ -61,7 +61,7 @@ class modExtraPackage
     {
         $this->builder = $this->modx->getService('transport.modPackageBuilder');
         $this->builder->createPackage($this->config['name_lower'], $this->config['version'], $this->config['release']);
-        $this->builder->registerNamespace($this->config['name_lower'], false, true, '{core_path}components/' . $this->config['name_lower'] . '/');
+        $this->builder->registerNamespace($this->config['name_lower'], false, true, '{core_path}components/' . $this->config['name_lower'] . '/','{assets_path}components/' . $this->config['name_lower'] . '/');
         $this->modx->log(modX::LOG_LEVEL_INFO, 'Created Transport Package and Namespace.');
 
         $this->category = $this->modx->newObject('modCategory');
@@ -753,9 +753,14 @@ if (!file_exists(dirname(__FILE__) . '/config.inc.php')) {
     exit('Could not load MODX config. Please specify correct MODX_CORE_PATH constant in config file!');
 }
 $config = require(dirname(__FILE__) . '/config.inc.php');
-$install = new modExtraPackage(MODX_CORE_PATH, $config);
+$install = new frontNotificationPackage(MODX_CORE_PATH, $config);
 $builder = $install->process();
-
+if($config["set_debug_namespace"]){
+    $install->builder->namespace->set("path",$install->config["core"]);
+    $install->builder->namespace->set("assets_path",$install->config["assets"]);
+    $install->builder->namespace->save();
+    $install->modx->log(MODX_LOG_LEVEL_INFO,"namespace changed to dev folder");
+}
 if (!empty($config['download'])) {
     $name = $builder->getSignature() . '.transport.zip';
     if ($content = file_get_contents(MODX_CORE_PATH . '/packages/' . $name)) {
