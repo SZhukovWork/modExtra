@@ -760,9 +760,6 @@ if($config["set_debug_namespace"]){
     $install->builder->namespace->set("assets_path",$install->config["assets"]);
     $install->builder->namespace->save();
     $install->modx->log(MODX_LOG_LEVEL_INFO,"namespace changed to dev folder");
-    $install->modx->removeExtensionPackage($install->builder->namespace->name);
-    $install->modx->addExtensionPackage($install->config["name_lower"], str_replace("\\","/",$install->config["core"]) ."model/");
-    $install->modx->log(MODX_LOG_LEVEL_INFO,"extension package path changed to dev folder: ".$install->config["name_lower"]);
 }
 if (!empty($config['download'])) {
     $name = $builder->getSignature() . '.transport.zip';
