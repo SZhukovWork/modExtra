@@ -1,5 +1,4 @@
 <?php
 /** @var modX $modx */
-switch ($modx->event->name) {
-
-}
+//$ns = $modx->getObject("modNamespace","modextra");
+//$fnotification = $modx->getService("modExtra","modExtra",$ns->get('path'));
