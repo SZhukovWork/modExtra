@@ -1,6 +1,7 @@
 <?php
 
 return [
+    /* example
     'modExtra' => [
         'description' => '',
         'type' => 'file',
@@ -8,5 +9,5 @@ return [
         'namespace' => 'modextra',
         'lexicon' => 'modextra:dashboards',
         'size' => 'half',
-    ],
+    ],*/
 ];
