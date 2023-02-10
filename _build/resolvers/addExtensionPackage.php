@@ -10,8 +10,6 @@ if ($transport->xpdo) {
             $modx->addExtensionPackage($transport->name, "[[++core_path]]components/{$transport->name}/model/");
             break;
         case xPDOTransport::ACTION_UPGRADE:
-            $modx->removeExtensionPackage($transport->name);
-            $modx->addExtensionPackage($transport->name, "[[++core_path]]components/{$transport->name}/model/");
             break;
         case xPDOTransport::ACTION_UNINSTALL:
             break;
